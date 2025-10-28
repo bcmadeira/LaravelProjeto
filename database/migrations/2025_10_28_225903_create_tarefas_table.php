@@ -16,6 +16,12 @@ return new class extends Migration
         Schema::create('tarefas', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string('nome', 100);
+            $table->date('dia')->nullable();
+            $table->time('horario')->nullable();
+            $table->boolean('status')->default(false);
+            $table->string('observacao')->nullable();
+            $table->foreignId('categoria_id')->constrained('categorias')->onDelete('cascade');
         });
     }
 
