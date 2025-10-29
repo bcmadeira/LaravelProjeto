@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Criação De tarefas</title>
+    <title>Criação de Tarefas</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
@@ -19,8 +19,10 @@
 
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a href="#" class="nav-link">Início</a></li>
+                    <li class="nav-item"><a href="{{ route('tarefas.index') }}" class="nav-link">Início</a></li>
                     <li class="nav-item"><a href="{{ route('tarefas.create') }}" class="nav-link active">Nova Tarefa</a></li>
+                    <li class="nav-item"><a href="{{ route('categorias.index') }}" class="nav-link">Categorias</a></li>
+                    <li class="nav-item"><a href="{{ route('categorias.create') }}" class="nav-link">Nova Categoria</a></li>
                 </ul>
             </div>
         </div>
@@ -72,10 +74,9 @@
                                     <option value="">Selecione uma categoria</option>
                                     @foreach($categorias as $categoria)
                                     <option value="{{ $categoria->id }}"
-                                        {{ old('categorias_id') == $categoria->id ? 'selected' : '' }}>
+                                        {{ old('categoria_id') == $categoria->id ? 'selected' : '' }}>
                                         {{ $categoria->nome }}
                                     </option>
-
                                     @endforeach
                                 </select>
                             </div>
@@ -91,7 +92,7 @@
     </div>
 
     <footer class="bg-dark text-white text-center py-3 mt-5 shadow-sm">
-        &copy; {{ date('Y') }} - Sistema de Tarefas Laravel
+        Sistema de Tarefas Laravel
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

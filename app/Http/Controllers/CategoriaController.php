@@ -7,6 +7,13 @@ use Illuminate\Http\Request;
 
 class CategoriaController extends Controller
 {
+    public function index()
+    {
+        $categorias = Categoria::orderBy('nome', 'asc')->get();
+        return view('list.categoria.index', compact('categorias'));
+    }
+
+
     public function create()
     {
         return view('list.categoria.criar');
@@ -22,6 +29,8 @@ class CategoriaController extends Controller
             'nome' => $request->nome,
         ]);
 
-        return redirect()->route('categorias.create')->with('success', 'Categoria criada com sucesso!');
+        return redirect()
+            ->route('categorias.index')
+            ->with('success', 'Categoria criada com sucesso!');
     }
 }

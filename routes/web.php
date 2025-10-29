@@ -26,13 +26,11 @@ Route::get('/produtos', [ProdutoController::class, 'index'])->name('produtos.ind
 Route::get('/clients/{id}', [ClientController::class, 'show'])->name('clients.show');
 
 
-Route::get('/categorias/criar', [CategoriaController::class, 'create'])->name('categorias.create');
-
+Route::get('/categorias', [CategoriaController::class, 'index'])->name('categorias.index');
+Route::get('/categorias/create', [CategoriaController::class, 'create'])->name('categorias.create');
 Route::post('/categorias', [CategoriaController::class, 'store'])->name('categorias.store');
 
-
-Route::prefix('tarefas')->group(function () {
-    Route::get('/', [TarefasController::class, 'index'])->name('tarefas.index');
-    Route::get('/create', [TarefasController::class, 'create'])->name('tarefas.create'); 
-    Route::post('/', [TarefasController::class, 'store'])->name('tarefas.store');
-});
+Route::get('/tarefas', [TarefasController::class, 'index'])->name('tarefas.index');
+Route::get('/tarefas/create', [TarefasController::class, 'create'])->name('tarefas.create');
+Route::post('/tarefas', [TarefasController::class, 'store'])->name('tarefas.store');
+Route::post('/tarefas/{id}/status', [TarefasController::class, 'toggleStatus'])->name('tarefas.toggleStatus');
