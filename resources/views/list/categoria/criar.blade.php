@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <h1> Criar Categoria </h1>
+    <h1 class="text-center"> Criar Categoria </h1>
 
     <div class="container mt-5" style="max-width: 500px;">
         <form action="{{ route('categorias.store') }}" method="POST" class="border p-4 rounded shadow-sm bg-light">
