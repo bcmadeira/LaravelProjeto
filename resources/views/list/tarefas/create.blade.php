@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Criação De tarefas</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
+
 <body class="bg-light">
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
@@ -36,17 +38,17 @@
                     <div class="card-body">
 
                         @if (session('success'))
-                            <div class="alert alert-success">{{ session('success') }}</div>
+                        <div class="alert alert-success">{{ session('success') }}</div>
                         @endif
 
                         @if ($errors->any())
-                            <div class="alert alert-danger">
-                                <ul class="mb-0">
-                                    @foreach ($errors->all() as $erro)
-                                        <li>{{ $erro }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
+                        <div class="alert alert-danger">
+                            <ul class="mb-0">
+                                @foreach ($errors->all() as $erro)
+                                <li>{{ $erro }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
                         @endif
 
                         <form action="{{ route('tarefas.store') }}" method="POST">
@@ -54,14 +56,14 @@
 
                             <div class="mb-3">
                                 <label for="titulo" class="form-label">Título da Tarefa</label>
-                                <input type="text" name="titulo" id="titulo" class="form-control shadow-sm" 
-                                       placeholder="Digite o título" value="{{ old('titulo') }}" required>
+                                <input type="text" name="titulo" id="titulo" class="form-control shadow-sm"
+                                    placeholder="Digite o título" value="{{ old('titulo') }}" required>
                             </div>
 
                             <div class="mb-3">
                                 <label for="descricao" class="form-label">Descrição</label>
                                 <textarea name="descricao" id="descricao" class="form-control shadow-sm" rows="3"
-                                          placeholder="Digite uma descrição (opcional)">{{ old('descricao') }}</textarea>
+                                    placeholder="Digite uma descrição (opcional)">{{ old('descricao') }}</textarea>
                             </div>
 
                             <div class="mb-3">
@@ -69,10 +71,11 @@
                                 <select name="categoria_id" id="categoria_id" class="form-select shadow-sm" required>
                                     <option value="">Selecione uma categoria</option>
                                     @foreach($categorias as $categoria)
-                                        <option value="{{ $categoria->id }}" 
-                                            {{ old('categorias_id') == $categoria->id ? 'selected' : '' }}>
-                                            {{ $categoria->nome }}
-                                        </option>
+                                    <option value="{{ $categoria->id }}"
+                                        {{ old('categorias_id') == $categoria->id ? 'selected' : '' }}>
+                                        {{ $categoria->nome }}
+                                    </option>
+
                                     @endforeach
                                 </select>
                             </div>
@@ -93,4 +96,5 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

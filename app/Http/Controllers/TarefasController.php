@@ -23,7 +23,7 @@ class TarefasController extends Controller
      */
     public function create()
     {
-        $categorias = Categoria::all();
+        $categorias = Categoria::all(); // Pega todas as categorias do banco
         return view('list.tarefas.create', compact('categorias'));
     }
 
